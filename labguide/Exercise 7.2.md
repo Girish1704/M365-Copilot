@@ -24,7 +24,7 @@ This guide introduces how to apply sensitivity labels to Word documents in Micro
 
 1. In the title bar, verify the document name **Test-label (1)** and observe the sensitivity indicator icon **(2)**.
 
-   ![](./media/m36-gt-lab-ex4-0-g2.png)
+   ![.](./media/m36-gt-lab-ex4-0-g2.png)
 
 1. From the **Sensitivity** menu, select **Confidential-Finance** to apply the sensitivity label to the document.
 
