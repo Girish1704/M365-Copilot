@@ -33,162 +33,182 @@ The **Public** sensitivity label is applied to information that can be freely sh
    >**Note:** Your access has been set to Global Reader, meaning you won't be able to make changes. These instructions are for viewing only, reflecting the read-only access granted in your environment.
 
 
-### Task 1.1: How are sensitivity labels created in Microsoft Purview (Read Only)
+### Task 1: How are sensitivity labels created in Microsoft Purview (Read Only)
 
 In this task, you will learn how Purview is used to implement sensitivity labels for your data assets.
 
 >**Note:** You are not expected to perform the following steps. This information is provided solely to give you an understanding of the process of creating and publishing Sensitivity Labels in the Purview portal.
 
-
-- Navigate to Microsoft Purview Portal using the following URL:
+1. In a new browser tab, navigate to the **Microsoft 365 admin center** using the following URL:
 
    ```
-   https://compliance.microsoft.com/homepage
+   https://admin.microsoft.com/
    ```
 
-- From the left menu select **labels (1)** and in the yellow information box, indicate that Your organization has not turned on the ability to process content in Office online files that have encrypted sensitivity labels applied and are stored in OneDrive and SharePoint. Select **Turn on now (2)**. Once you do this, there can be a delay for the setting to propagate through the system.
+1. From the left navigation pane of the **Microsoft 365 admin center**, select **Show all**.
 
-   ![](./media/exercise3(2.1).png)
+   ![](./media/L1-P1-T1-S7.png)
 
-- On **Labels (1)** page, select **+ Create a label (2)**.
+1. Under Admin centers, select **Microsoft Purview**. A new browser page will open and navigate you to the Microsoft Purview welcome page.  
 
-   ![](./media/exercise3(2.2).png)
+   ![](./media/mp-07.png)
+   
+1. If the **Welcome to the New Microsoft Purview portal** popup appears, click on **Get started.**
 
-- Provide a name and description for your label. Select **Next (4)** at the bottom of the page.
+   ![](./media/ex1-se-app-def-g1.png)
 
-    | Setting | Action |
-    | -- | -- |
-    | **Name** | Enter **Confidential-Finance (1)** |
-    | **Display name** | Enter **Confidential-Finance (2)** |
-    | **Description for users** | Enter **Confidential-Finance Demo (3)** | 
+1. From the left navigation pane of **Microsoft Purview**, click on **Solutions (1)**,and select **Information protection (2)**
 
-   ![](./media/exercise3(2.3).png)
+   ![](./media/L1-P1-T1-S11.png)
+   
+1. Under the **Information protection** panel, select **Sensitivity labels (1)**, and select **Turn on now (2)** in the **yellow** information box that indicates **Your organization has not turned on the ability to process content in Office online files that have encrypted sensitivity labels applied and are stored in OneDrive and SharePoint**. Once you do this, there can be a delay for the setting to propagate through the system.
 
-- Note the scope for this label. The scope is set to Items. Read the description but don’t change anything. Select **Next** at the bottom of the page.
+   ![](./media/ex2-se-ap2-def-g3.png)
 
-   ![](./media/exercise3(2.4).png)
+1. On the **Sensitivity labels** page, select **Create a label**.
 
-- On the **Choose protection settings for labeled items** select **Apply or remove encryption (1)** and **Apply content marking (2)**, then select **Next (3)**.
+   ![](./media/d1-e4-seco4-g1.png)
 
-   ![](./media/exercise3(2.5).png)   
+   > **Note:** If you see the updated UI, select **+ Create** and then choose **Label** to start creating a new sensitivity label.
 
-- The Encryption window shows the configuration for the encryption settings. Review the information box under Configure encryption settings and review the configured settings. Notice how the user access to content is set to never expire. You can also assign permissions to specific users and groups By clicking on the **Assign permissions (1)**. On the Assign permissions blade, click on **+ Add users or groups (2)**.
+1. Provide a name and description for your label. Select **Next (4)** at the bottom of the page.
 
-   ![](./media/exercise3(2.6).png)
+   | Setting | Action |
+   | -- | -- |
+   | **Name** | Enter **Confidential-Finance (1)** |
+   | **Display name** | Enter **Confidential-Finance (2)** |
+   | **Label priority** | Select **Highest (3)** |
+   | **Description for users** | Enter **Confidential-Finance Demo (4)** | 
+   
+   ![](./media/ex2-se-ap2-def-g4.png)
 
--  On the **Add users or groups** window, select the user name and click on **Add (2)**.
+1. Note the scope of this label. The scope is set to **Files and other data assets**, **Emails** and **Meetings**. Read the description, but don’t change anything. Select **Next** at the bottom of the page.
 
-   ![](./media/exercise3(2.7).png)
+   ![](./media/cor-se-apt-def-g3.png)
 
-- You will be redirected to the **Assign Permission** page. Verify that the user is selected and click on **Save (2)**.
+1. On the **Choose protection settings** page, select **Apply content marking (1)** and then click **Next (2)** to continue.
 
-   ![](./media/exercise3(2.8).png)
+   ![](./media/cor-se-apt-def-g4.png)
 
-   >**Note:** Only selected users can interact with content that has this label applied. Under users and groups, the tenant is defined so all users in your tenant can view content that has this label.
+   > **Note:** The **Control access** option is not selected in this lab because it requires **Rights Management (Azure RMS / Microsoft Purview Information Protection)** to be enabled and fully configured in the organization. Since RM services may not be activated in the newly created lab tenant, this option is intentionally skipped to avoid configuration or policy enforcement issues. 
 
-- Click Next on Encryption window.
+1. On the **Content marking** page, take note of the information box at the top of the page. Turn on the **Content marking (1)** and select the check box for **Add a watermark (2)**, **Add a header (3)** and **Add a footer (4)**.
 
-   ![](./media/exercise3(2.9).png)
+   ![](./media/lab1-image10.png)
 
-- On the content markings page, take note of the information box at the top of the page. Turn on the **Content Making (1)** and select the check box for **Add a watermark (2)**, **Add a header (3)** and **Add a footer (4)**.
+1. Under **Add a watermark**, click on **Customize text (1)**. Under **Watermark text**, type **Confidential watermark text (2)** and click on **Save (3)**.
 
-   ![](./media/exercise3(2.10).png)
-
-- Under **Add a watermark**, click on **Customize text (1)**. Under Watermark text, type **Confidential watermark text (2)** and click on **Save (3)**.
-
-   ![](./media/exercise3(2.11).png)
-
-- Under **Add a header**, click on **Customize text (1)**. Under Header text, type **Confidential Document (2)** and click on **Save (3)**.
-
-   ![](./media/exercise3(2.12).png)
-
-- Under **Add a footer**, click on **Customize text (1)**. Under Footer text, type **Confidential Document (2)** and click on **Save (3)**.
-
-   ![](./media/exercise3(2.13).png)
-
-   >**Note**: Content markings will be applied to documents but only headers and footers will be applied to email messages. In other words, watermarks are not applied to emails.
-
-- The content marking associated with this label is a watermark. Select Next at the bottom of the page.
-
-   ![](./media/exercise3(2.14).png)
-
-- You are now in the Auto-labeling for files and emails window. Turn on the **Auto-labeling for files and emails (1)** and Read the description of auto-labelling on the top of the page and the information box below it and under Detect content that matches these conditions click on **+ Add condition (2)** from the drop-down select **Content contains (3)** then under Group name select **Add (4)** drop-down, select Sensitive info type and in Sensitive info type (5) window search for **Credit (6)** and select the **Credit card number (7)**, select **Add (8)** from the button, select **Next (9)** on the bottom of the page.
-
-   ![](./media/exercise3(2.15).png)
+   ![](./media/cor-se-apt-def-g6.png)
   
-   ![](./media/exercise3(2.16).png)
-  
-   ![](./media/exercise3(2.17).png)
-  
-   ![](./media/exercise3(2.18).png)
+1. Under **Add a header**, click on **Customize text (1)**. Under **Header text**, type **Confidential Document (2)** and click on **Save (3)**.
 
-- This next window defines protection settings for groups and sites that have this label applied. If this is not enabled, select Next at the bottom of the page.
+   ![](./media/ex2-se-ap2-def-g5.png)
 
-   ![](./media/exercise3(2.19).png)
+1. Under **Add a footer**, click on **Customize text (1)**. Under **Footer text**, type **Confidential Document (2)** and click on **Save (3)**.
 
-- Review the settings and click on Create label.
+   ![](./media/cor-se-apt-def-g7.png)
 
-   ![](./media/exercise3(2.20).png)
+   >**Note:** Content markings will be applied to documents, but only headers and footers will be applied to email messages. In other words, watermarks are not applied to emails.
 
-### Task 1.3: Publish sensitivity label (Read Only)
+1. The content marking associated with this label includes a watermark. Select **Next** at the bottom of the page.
+
+   ![](./media/L1-P1-T1-S25.png)
+
+1. On the **Auto-labelling for files and emails** page, complete the following:
+
+   - Turn on **Auto-labelling for files and emails (1)**.
+   - Select **+ Add condition (2)** and choose **Content contains (3)**.
+   - Under **Group name**, select **Add (4)** and choose **Sensitive info type**.
+   - In the **Sensitive info type (5)** window, search for **Credit (6)** and select **Credit card number (7)**.
+   - Select **Add (8)**, and then choose **Next (9)**.
+
+      ![](./media/autolabeling.png)
+
+      ![](./media/content.png)
+
+      ![](./media/creditcardnumber.png)
+
+      ![](./media/next.png)
+
+      >**Note:** If you did not find sensitive info type groups as mentioned, navigate back to the labels page and ensure that the features have been enabled as specified.
+
+1. This next window defines protection settings for groups and sites to which this label applied. Select **Next** at the bottom of the page.
+
+   ![](./media/ex2-se-ap2-def-g6.png)
+
+1. Review the settings and click on the **Create label**.
+
+   ![](./media/adm-cop-3.1-g14.png)
+
+1. On the **Your sensitivity label that was created** blade, select **Don't create a policy yet (1)** and click **Done (2)**.
+
+   ![](./media/cor-se-apt-def-g5.png)
+
+1. Back on the **labels** blade, notice the newly created sensitivity labels.
+
+   ![](./media/L1-P1-T1-S31.png)
+
+### Task 2: Publish sensitivity label (Read Only)
 
 The task aims to provide a streamlined method for publishing sensitivity labels to users. Users are guided through a series of steps within Microsoft Purview, specifically under Label policies. The objective is to make the selected labels, such as Confidential-Finance and Highly-Confidential, available to all users, ensuring consistent and standardized data protection measures.
 
-- In the Microsoft Purview. portal, under Solutions, expand Information protection and in the drop-down select **Label policies (1)** and click on **Publish label (2)**.
+1. In the **Microsoft Purview portal**, under **Sensitivity labels** from the panel and click on **Publish label**.
 
-   ![](./media/exercise3(2.21).png)
+   ![](./media/adm-cop-3.1-g15.png)
 
-- Select **Choose sensitivity labels to publish (1)**. A window opens that provides information about the policy. Select **Confidential-Finance (2)** from the label and select **Add (3)**.
+1. On the **Create policy** page, select **Choose sensitivity labels to publish**, and then select the required labels.
 
-   ![](./media/exercise3(2.22).png)
+   ![](./media/adm-cop-3.1-g16.png)
 
-- Back on **Choose sensitivity labels to publish** blade, click on **Next**.
+1. In the **Sensitivity labels to publish** pane, select **Confidential-Finance (1)**, and then click **Add (2)**.
 
-   ![](./media/exercise3(2.23).png)
+   ![](./media/adm-cop-3.1-g17.png)
 
-- Click on **Next** on the **Assign Admin Units** page.
+1. Back on **Choose sensitivity labels to publish** blade, click on **Next**.
 
-   ![](./media/exercise3(2.24).png)
+   ![](./media/adm-cop-3.1-g18.png) 
 
-- Read the description under **Publish to users and groups**. Notice that this label is available to all users. Don’t change any settings. Select **Next** at the bottom of the page.
+1. Click on **Next** on the Assign Admin Units page.
 
-   ![](./media/exercise3(2.25).png)
+   ![](./media/cor-se-apt-def-g11.png) 
 
-- Under the policy settings, don’t change any settings. Select **Next** at the bottom of the page.
+1. Read the description under **Publish to users and groups**. Notice that this label is available to all users; don’t change any settings. Select **Next** at the bottom of the page.
 
-   ![](./media/exercise3(2.26).png)
+   ![](./media/cor-se-apt-def-g12.png)  
 
-- Under the **Apply a Default label to documents**, don’t change any settings. Select **Next** at the bottom of the page.
+1. Under the policy settings, don’t change any settings. Select **Next** at the bottom of the page.
 
-   ![](./media/exercise3(2.27).png)
+   ![](./media/cor-se-apt-def-g13.png) 
 
-- Under the **Apply a Default label to emails**, don’t change any settings. Select **Next** at the bottom of the page.
+1. Under the **Apply a Default label to documents**, don’t change any settings. Select **Next** at the bottom of the page.
 
-   ![](./media/exercise3(2.28).png)
+   ![](./media/cor-se-apt-def-g14.png) 
 
-- Under the **Apply a default label to meetings and calendar events**, don’t change any settings. Select **Next** at the bottom of the page.
+1. Under the **Apply a Default label to emails**, don’t change any settings. Select **Next** at the bottom of the page.
 
-   ![](./media/exercise3(2.29).png)
+   ![](./media/cor-se-apt-def-g15.png)  
 
-- Under the **Apply a default label to Fabric and Power BI content**, don’t change any settings. Select **Next** at the bottom of the page.
+1. Under the **Apply a default label to meetings and calendar events**, don’t change any settings. Select **Next** at the bottom of the page.    
 
-   ![](./media/exercise3(2.30).png)
+   ![](./media/cor-se-apt-def-g16.png)   
 
-- The last configuration option is to name your policy. Enter the policy name as **Confidential-Policy (1)**. Select **Next (2)** on the bottom of the page to exit the policy configuration and return to the **Information Protection** page.
+1. Under the **Apply a default label to Fabric and Power BI content**, don’t change any settings. Select **Next** at the bottom of the page.
 
-   ![](./media/exercise3(2.31).png)
+   ![](./media/cor-se-apt-def-g17.png) 
 
-- Review the settings and click on **Submit** and then select **Done**.
+1. The last configuration option is to name your policy. Enter the policy name as **Confidential-Policy (1)**. Select **Next (2)** at the bottom of the page to complete the policy configuration and return to the Information Protection page.
 
-   ![](./media/exercise3(2.32).png)
-  
-   ![](./media/exercise3(2.33).png)
+   ![](./media/cor-se-apt-def-g18.png)  
 
-- Back to **Label policies** blade and notice the newly published label.
+1. Review the settings, click on **Submit**, and then select **Done**.
 
-   ![](./media/exercise3(2.34).png)
+   ![](./media/adm-cop-3.1-g19.png)   
+    
+   ![](./media/cor-se-apt-def-g19.png) 
 
+1. In the **Label publishing policies (1)** section under **Policies**, notice the **newly published label policy**.
 
+   ![](./media/mp-09.png) 
 
 This task has provided a clear walkthrough for implementing sensitivity labels in Microsoft Purview, enabling users to categorize and safeguard data based on confidentiality. The guided steps cover label creation, encryption configuration, content marking, and automated labeling, fostering a strong understanding of data protection. Customization options for watermarks, headers, and footers enhance security measures. Demonstrating practical application, the task integrates sensitivity labels seamlessly into Word documents, emphasizing their importance in real-world scenarios. The subsequent label publishing and application steps ensure consistent and standardized data protection, contributing to a robust organizational data governance framework.
 
