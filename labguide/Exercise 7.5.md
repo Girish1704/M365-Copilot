@@ -65,55 +65,53 @@ The following information is displayed for each item on the **Pending** tab for 
 
 To use Communication compliance in Microsoft 365 Copilot, follow the below steps:
 
-1. Navigate to `https://compliance.microsoft.com/` and sign in using the **CloudLabs provided credentials**.
+1. In the **Microsoft Purview** portal, in the left navigation pane, select **Solutions (1)**, and then choose **Communication Compliance (2)**.
 
-1. In the left navigation pane of the compliance portal, select **Communication compliance**. You will land on the **Overview** page of the **Communication compliance** portal.
+    ![](./media/adm-cop-7.3-g4.png)
 
-    ![](./media/communication-compliance-overview.png)
+1. In the **Communication Compliance** page, select **Policies (1)**, and then choose **Create policy (2)**.
 
-1. Select the **Policies** tab and select **Create policy** to create and configure a new policy from a template or to create and configure a custom policy.
+    ![](./media/adm-cop-7.3-g5.png)
 
-    ![](./media/communication-compliance-createpolicy.png)
+1. From the **Create policy** dropdown, select **Detect Microsoft Copilot interactions**.
 
-1. To use communication compliance on Microsoft 365 Copilot, choose **Detect Copilot for Microsoft 365 interactions**, and a flyout page containing the required details will appear.
+    ![](./media/adm-cop-7.3-g6.png)
 
-    ![](./media/communication-compliance-copilot.png)
+1. In the **Detect Microsoft Copilot interactions** page, select **All users (1)**, enter **ODL_User <inject key="DeploymentID" enableCopy="false"/> (2)** under Reviewers, and then select the suggested user **(3)**.
 
-1. You can see the name of the policy in the **Policy name** section, which is already populated. Here you can configure the following settings:
+    ![](./media/adm-cop-7.3-g7.png)
 
-    ![](./media/compliance-policy-config.png)
-    
-    - **Users or groups in scope:** Choose the users or groups to apply the policy to, including the users or groups you'd like to exclude. When using the conflict of interest template, you'll select two groups or two users to detect internal communications. You can select **All users** here.
+1. In the **Detect Microsoft Copilot interactions** page, verify the **Reviewers** field, and then select **Add trainable classifiers**.
 
-    - **Reviewers:** Reviewers added here are the reviewers that you can choose from when escalating an alert in the investigation and remediation workflow. When reviewers are added to a policy, they automatically receive an email message that notifies them of the assignment to the policy and provides links to information about the review process. You can select your own user here.
+    ![](./media/adm-cop-7.3-g8.png)
 
-    - **Sensitive data to collect:** This step is where you can select default and custom sensitive info types. Pick from existing custom sensitive information types or custom keyword dictionaries in the communication compliance policy wizard. You can create these items before running the wizard if needed. You can also create new sensitive information types from within the communication compliance policy wizard.
+1. In the **Add trainable classifiers** pane, select all classifiers using the checkbox **(1)**, and then choose **Add (2)**.
 
-        Select **Add trainable classifiers** to choose classifiers which can detect potentially inappropriate language and images sent or received in the body of email messages or other types of text. You can also select all the classifiers as per your choice and click **Add**.
+    ![](./media/adm-cop-7.3-g9.png)
 
-        ![](./media/policy-trainable-classifiers.png)
+1. In the **Detect Microsoft Copilot interactions** page, review the selected classifiers, and then select **Create policy**.
 
-1. Select **Create policy**.
+    ![](./media/adm-cop-7.3-g10.png)
 
-1. Within sometime, your policy will be created and select **Close** to close the flyout page.
+1. On the **Your policy was created** page, select **Close**.
 
-    ![](./media/compliance-policy-created.png)
+    ![](./media/adm-cop-7.3-g11.png)
 
-    >**Note:** It might take upto 1 hour to activate your policy.
+    >**Note:** It might take upto 24 hours to activate your policy.
 
-1. To test the proper functioning of your policy, select the **More actions** icon on your recently created policy and select **Test policy conditions**.
+1. In the **Policies** list, select the **More actions (1)** icon for your policy, and then choose **Test policy conditions (2)**.
 
-    ![](./media/compliance-policy-test.png)
+    ![](./media/adm-cop-7.3-g12.png)
 
-1. In the flyout page:
+1. In the **Test policy conditions** pane, select **Enter messages to test (1)**, enter the following message **(2)**, and then choose **Test (3)**.
 
-    ![](./media/compliance-policy-tested.png)
+    ```
+    Let’s coordinate buying shares to push the stock price up, Spread positive rumors to influence investor behavior, Plan to sell once the price is artificially inflated, Work together to manipulate trading volume for quick gains.
+    ```
 
-    - Select the **Enter messages to test** option, and then enter some messages that you expect would be detected by the policy. Separate messages with a comma.
+    ![](./media/adm-cop-7.3-g13.png)
 
-    - If you have a .txt file that includes a list of messages to detect, select **Upload a file containing messages to test** option, and then select **Upload file** to upload your text file.
-
-1. Select **Test** to see a list of test results.
+1. Note that the policy results may not appear immediately, as newly created policies can take up to 24 hours to start detecting and displaying matches.
 
 ## Conclusion
 
