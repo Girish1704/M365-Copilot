@@ -50,6 +50,26 @@ After the admin enables web content access for **Microsoft 365 Copilot**, you ca
 
     ![](../labguide/media/adm-cop-3.1-g11.png)
 
+1. Now, try sending a few prompts to Copilot to generate some activity. Copy and paste each of the following prompts into the **Message Copilot** box and press **Enter**:
+
+    ```
+    What are the benefits of using Microsoft 365 Copilot in a business environment?
+    ```
+
+    ```
+    Summarize the key features of Microsoft Teams for team collaboration.
+    ```
+
+    ```
+    Give me a brief overview of how sensitivity labels work in Microsoft 365.
+    ```
+
+    ```
+    What are some best practices for creating a PowerPoint presentation using AI?
+    ```
+
+    >**Note:** These prompts help you get familiar with the Copilot chat experience and also generate activity that you will reference in later exercises.
+
 ## Conclusion
 
 In this exercise, you reviewed the web search settings for **Microsoft 365 Copilot** in the **Microsoft 365 Admin Center** and confirmed that web content access is enabled by default. You also verified the Copilot chat experience from the end-user side by reviewing the available options in the Microsoft 365 Copilot chat interface.
