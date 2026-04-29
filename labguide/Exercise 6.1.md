@@ -8,7 +8,7 @@ This exercise guides you through the process of managing **Microsoft 365 Copilot
 
 >**Note:** Your access has been set to Global Reader, meaning you won't be able to make changes. These instructions are for viewing only, reflecting the read-only access granted in your environment.
 
-### Task 1: Assign Copilot licenses to the user
+### Task 1: Verify licenses to the user
 
 Follow these steps to assign a Copilot license for an existing user from the admin center:
 
@@ -22,33 +22,17 @@ Follow these steps to assign a Copilot license for an existing user from the adm
 
     ![](../labguide/media/adm-cop-3.1-g1.png)
 
-1.  In the Active Users page, search or find the user you want to manage the Copilot license. Click on the user.
+1. On the **Active users** page, select **ODL_User <inject key="DeploymentID" enableCopy="false"/>**.
 
-    ![](../labguide/media/active-users.png)
+    ![](../labguide/media/adm-cop-3.1-g2.png)
 
 1. On the user's profile page, on the right side click on **Licenses and apps** to go to their license details.
 
-    ![](../labguide/media/user-licenses.png)
+    ![](../labguide/media/adm-cop-3.1-g3.png)
 
-1. To assign, expand the **Licenses (1)** section, select the boxes for the licenses that you want to assign, then select **Save changes (3)**.
+1. In the user details page, select **Licenses and apps**, and verify that the required licenses are assigned.
 
-   >**Note:** In this case, we have already assigned the licences to the account.
-
-    ![](../labguide/media/M11.png)
-
- All license changes are saved automatically after you make an assignment change.
-
-### Task 2: Remove a Copilot licenses
-
-To remove an already assigned Copilot license:
-
-1. Follow the steps above to open the user's **Licenses and apps**.
-
-    ![](../labguide/media/user-licenses.png)
-
-1. Uncheck the **Microsoft Copilot for Microsoft 365** under the licenses section.
-
-    ![](../labguide/media/M18.png)
+    ![](../labguide/media/adm-cop-3.1-g21.png)
 
     >**Note:** In this case, you don't need to remove the licenses.
 

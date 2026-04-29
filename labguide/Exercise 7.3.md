@@ -28,90 +28,142 @@ Before deploying Copilot, it is essential to prepare your data to maximize its e
 
 >**Note:** You are not expected to perform the following steps. This information is provided solely to give you an understanding of the process of Data Classification in the Purview portal. Your access has been set to Global Reader, meaning you won't be able to make changes. These instructions are for viewing only, reflecting the read-only access granted in your environment.
 
-### Task 1: Using the Microsoft data classification dashboard
+### Task 1: Exploring Classifiers in Microsoft Purview
 
-The **data classification page** provides visibility into that body of content, specifically:
+Data classification in Microsoft Purview is organized under the **Information Protection** solution. In this task, you will explore the **Classifiers** page, which is where you can view and manage the different types of classifiers your organization uses to identify sensitive content.
 
-- the number items that have been classified as a sensitive information type and what those classifications are
+>**Note:** Data classification scans your sensitive content and labeled content before you create any policies. This is called **zero change management**. This lets you see the impact that all the retention and sensitivity labels are having in your environment and helps you start assessing your protection and governance policy needs.
 
-- the top applied sensitivity labels in both Microsoft 365 and Azure Information Protection
+1. Navigate to `https://purview.microsoft.com/` and sign in using the **CloudLabs provided credentials**.
 
-- the top applied retention labels
+1. In the left navigation pane of the Microsoft Purview portal, expand **Information Protection** **(1)** and select **Classifiers** **(2)**.
 
-- a summary of activities that users are taking on your sensitive content
+    <!-- ![](../labguide/media/purview-classifiers-nav.png) -->
 
-- the locations of your sensitive and retained data
+1. On the **Classifiers** page, you will see multiple tabs across the top. Select the **Sensitive info types** tab. This page lists all the sensitive information types available in your tenant — both **built-in** (provided by Microsoft) and any **custom** types created by your organization.
 
-Follow the given steps to access the **Microsoft data classification dashboard**:
+1. Scroll through the list to review common sensitive information types such as **U.S. Social Security Number (SSN)**, and **International Banking Account Number (IBAN)**. Each entry displays the **name**, **publisher** (Microsoft or Custom), and whether it is currently used in any **policies**.
 
-1. Navigate to `https://compliance.microsoft.com/` and sign in using the **CloudLabs provided credentials**.
+    >**Note:** These sensitive information types are what Copilot and other Microsoft 365 services use behind the scenes to detect and protect sensitive data in your organization's emails, documents, and chats.
 
-1. In the left navigation pane of the compliance portal, select **Data classification** and then, select **Overview**.
+1. Use the **Search** bar at the top of the list to search for a specific sensitive information type. For example, type **Credit Card** and observe how the list filters to show matching results.
 
-1. Data classification will scan your sensitive content and labeled content before you create any policies. This is called **zero change management**. This lets you see the impact that all the retention and sensitivity labels are having in your environment and empower you to start assessing your protection and governance policy needs.
+1. Select any sensitive information type (e.g., **Credit Card Number**) to open its detail panel. Here you can review:
 
-1. The **Top sensitive information type** card shows the top sensitive information types that have been found and labeled across your organization.
+   - **Description** — What the sensitive information type detects.
+   - **Patterns** — The detection rules and confidence levels used to identify the data.
+   - **Associated policies** — Any DLP or auto-labeling policies currently using this type.
 
-1. To find out how many items are in any given classification category, hover over the bar for the category.
+1. Close the detail panel and select the **Trainable classifiers** tab. Trainable classifiers use machine learning to identify content by learning from examples rather than relying on fixed patterns. You will see a list of **built-in classifiers** provided by Microsoft, such as:
 
-    >**Note:** If the card displays the message "**No data found with sensitive information**", it means that there are no items in your organization that have been classified as being a sensitive information type or no items that have been crawled.
+   - **Resumes** — Detects resume/CV documents.
+   - **Source Code** — Identifies files containing programming source code.
+   - **Harassment** — Detects potentially harassing language in communications.
+   - **Threat** — Identifies threatening language.
 
-1. The **Top sensitivity labels applied to content** card shows the number of items (email or document) by sensitivity level.
+1. Select any trainable classifier to view its details, including the **description** and **status** (e.g., Ready to use). These classifiers can be used in DLP policies, auto-labeling policies, and communication compliance policies.
 
-    >**Note:** If you haven't created or published any sensitivity labels or no content has had a sensitivity label applied, this card will display the message **"No sensitivity labels detected"**.
+    >**Note:** In addition to built-in classifiers, organizations can create **custom trainable classifiers** by providing sample content for the classifier to learn from. You will not be creating one in this exercise.
 
-1. The **Top retention labels applied to content** card shows you how many items have a given retention label. Retention labels are used to manage the retention and disposition of content in your organization. When applied, they can be used to control how long an item will be kept before deletion, whether it should be reviewed prior to deletion, when its retention period expires, and whether it should be marked as a record.
+1. Now that you've explored the classifiers, you'll move on to the **Explorers** section to see how classified and labeled content appears across your organization.
 
-    >**Note:** If this card displays the message,**"No retention labels detected"**, it means you haven't created or published any retention labels or no content has had a retention label applied.
+### Task 2: Exploring Data Explorer
 
-1. The **Top activities detected** card provides a quick summary of the most common actions that users are taking on the sensitivity labeled items.
+**Data explorer** gives you a real-time snapshot of all the content in your organization that has been classified — whether through sensitivity labels, retention labels, or sensitive information type detection. This is where you can drill down into specific locations (Exchange, SharePoint, OneDrive, Teams) to see exactly which files and emails have been flagged.
 
-    >**Note:** If this card displays the message, **"No activity detected"** it means that there's been no activity on the files or that user and admin auditing isn't turned on.
+>**Note:** Microsoft has introduced **Data explorer** as the updated experience. The older **Content explorer (classic)** is still available under the Explorers section but may be retired in the future.
 
-1. The **Sensitivity and retention labeled data by location** cards provide visibility into the number of items that have which label as well as their location.
+1. In the Microsoft Purview portal, expand **Information Protection** **(1)** in the left navigation pane, then select **Explorers** **(2)**, and choose **Data explorer** **(3)**.
 
-    >**Note:** If this card displays the message, **"No locations detected"**, it means you haven't created or published any sensitivity labels or no content has had a retention label applied.
+    <!-- ![](../labguide/media/purview-data-explorer-nav.png) -->
 
-### Task 2: Using Content Explorer for Data Classification
+1. On the Data explorer page, you will see a left pane that organizes content into categories. Expand the following sections to explore what's available:
 
-**Content explorer** allows you to natively view the items that were summarized on the **Overview** page. It shows a current snapshot of the items that have a sensitivity label, a retention label or have been classified as a sensitive information type in your organization.
+   - **Sensitive info types** — Lists all sensitive information types that have been detected in your organization's content. Each type shows a **count** of how many items matched. For example, expanding **Credit Card Number** will show you how many documents/emails contain credit card data.
 
-Follow the given steps to use the content explorer for data classification:
+   - **Sensitivity labels** — Lists all sensitivity labels that have been applied to content. For example, you may see labels like **Confidential**, **Highly Confidential**, or **Public**. Expanding a label shows the count of items with that label.
 
-1. Navigate to `https://compliance.microsoft.com/` and sign in using the **CloudLabs provided credentials**.
+   - **Retention labels** — Lists all retention labels applied to content. These control how long content is retained and when it should be disposed of.
 
-1. In the left navigation pane of the compliance portal, select **Data classification** and then, select **Content explorer**.
+   - **Trainable classifiers** — Lists items detected by trainable classifiers (e.g., resumes, source code).
 
-1. If you know the name of the label, or the sensitive information type, you can type that into the filter box.
+1. Select any category (e.g., expand **Sensitive info types** > **Credit Card Number**). In the right pane, you will see the **data sources** where matching content was found, such as **Exchange**, **SharePoint**, and **OneDrive**.
 
-1. Alternately, you can browse for the item by expanding the label type and selecting the label from the list.
+1. Select a data source (e.g., **SharePoint**) and drill down through the folder structure. You can navigate through sites, libraries, and folders to locate specific files that were classified.
 
-1. Select a location under **All locations** and drill down the folder structure to the item and double-click to open the item natively in content explorer.
+1. Once you find a file, **double-click** on it to preview its content natively within Data explorer. This allows you to verify that the classification is accurate without needing to download or open the file separately.
 
-1. To create a .csv file that contains a listing of whatever the focus of the pane is, select **export**.
+    >**Note:** If a document is encrypted, the preview will be disabled to mitigate security risks.
 
->**Note:** It can take up to **seven days** for counts to be updated in content explorer.
+1. At the top of the right pane, notice the **Filter** option. When you're inside a specific location (e.g., a SharePoint site), you can use the filter to search by:
 
-### Task 3: Using Activity Explorer
+   - **Full site name** (e.g., `https://contoso.onmicrosoft.com/sites/sitename`)
+   - **File name** (e.g., `Report_2024.docx`)
+   - **File extension** (e.g., `pdf`, `xlsx`)
 
-**Activity explorer** allows you to monitor what's being done with your labeled content. It provides a historical view of activities on your labeled content. The activity information is collected from the Microsoft 365 unified audit logs, transformed, and then made available in the Activity explorer UI. Activity explorer reports on up to 30 days worth of data. There are more than 30 different filters available for use, like Data range, Activity type, Location, User, Sensitivity label, Retention label etc.
+1. To export a summary of the content currently displayed, select the **Export** button at the top of the pane. This generates a **.csv file** listing all items shown in the current view — useful for compliance auditing or reporting.
 
->**Note:** Make sure **Audit** is turned on before using this in your account. If it's not, select **Turn Audit ON** from the activity explorer page.
+    >**Note:** It can take up to **seven days** for counts to be updated in Data explorer, and up to **fourteen days** for files in SharePoint.
 
-To go to the **Activity Explorer**, follow the given steps:
+### Task 3: Monitoring Labeled Content with Activity Explorer
 
-1. Navigate to `https://compliance.microsoft.com/` and sign in using the **CloudLabs provided credentials**.
+While Data explorer shows you *what* content is classified, **Activity explorer** shows you *what's happening* to that content — who is interacting with labeled files, what actions they're taking, and whether any policy violations have occurred. It pulls from the Microsoft 365 unified audit logs and presents up to **30 days** of historical activity data.
 
-1. In the left navigation pane of the compliance portal, select **Data classification** and then, select **Activity explorer**.
+>**Note:** Make sure **Audit** is turned on before using this in your account. If it's not, you will see a banner at the top of the page with an option to **Turn Audit ON**.
 
-Activity explorer gathers information from the audit logs of multiple sources of activities. Some examples of the **Sensitivity label activities** and **Retention labeling activities** from applications native to Microsoft Office, the Azure Information Protection (AIP) unified labeling client and scanner, SharePoint, Exchange (sensitivity labels only), and OneDrive include:
+1. In the Microsoft Purview portal, expand **Information Protection** **(1)** in the left navigation pane, then select **Explorers** **(2)**, and choose **Activity explorer** **(3)**.
 
-- Labels applied
-- Labels changed (upgraded, downgraded, or removed)
-- Autolabeling simulation
-- File read
+    <!-- ![](../labguide/media/purview-activity-explorer-nav.png) -->
 
-In addition, using Endpoint data loss prevention (DLP), Activity explorer gathers DLP policy matches events from Exchange, SharePoint, OneDrive, Teams Chat and Channel, on-premises SharePoint folders and libraries and more.
+1. On the Activity explorer page, you will see a chart at the top showing activity volume over time, and a detailed activity list below it. Each entry in the list represents an action taken on labeled or sensitive content.
+
+1. Review the **columns** displayed in the activity list. Key columns include:
+
+   - **Date** — When the activity occurred.
+   - **Activity type** — What action was taken (e.g., Label applied, Label changed, File read, File copied).
+   - **User** — Who performed the action.
+   - **Item** — The file or email that was affected.
+   - **Location** — Where the item resides (Exchange, SharePoint, OneDrive, Teams, or Endpoint devices).
+   - **Sensitivity label** — The label on the item at the time of the action.
+
+1. Select the **Filter** button to open the filter pane. Activity explorer offers approximately **50 different filters**. Explore some of the most useful ones:
+
+   - **Activity type** — Filter by specific actions such as **Label applied**, **Label removed**, **Label downgraded**, **File copied to clipboard**, **File printed**, or **DLP policy matched**.
+   - **Sensitivity label** — Filter to see activity only on items with a specific label (e.g., **Highly Confidential**).
+   - **User** — Filter to see all activity performed by a specific user.
+   - **Location** — Filter by service (e.g., only SharePoint or only Endpoint devices).
+   - **Date range** — Narrow down to a specific time period.
+
+1. In addition to individual filters, Activity explorer provides **predefined filter sets** for common scenarios. Look for these at the top of the filter pane:
+
+   - **Endpoint DLP activities** — Shows all activities detected on endpoint devices (e.g., file copied, file printed, file uploaded).
+   - **Sensitivity labels applied, changed, or removed** — Quickly view all labeling actions.
+   - **Egress activities** — Shows data leaving the organization (e.g., files copied to USB, uploaded to cloud, sent via email).
+   - **DLP policies that detected activities** — Shows all events where a DLP policy was triggered.
+
+    >**Note:** You can also create and save your own **custom filter sets** for scenarios you frequently investigate.
+
+1. Select any individual activity entry in the list to open its **detail panel**. Here you can review the full context of the event, including:
+
+   - The **exact file path** or email subject.
+   - The **old and new label** (if a label was changed or downgraded).
+   - The **DLP policy** that was matched (if applicable).
+   - The **device name** (for endpoint activities).
+
+1. Understanding the types of activities that are tracked helps you assess whether your organization's data protection policies are working effectively. Common activities captured include:
+
+   | Activity Type | Description |
+   |---|---|
+   | **Label applied** | A sensitivity or retention label was applied to a document or email. |
+   | **Label changed** | A label was upgraded, downgraded, or removed. |
+   | **Auto-labeling simulation** | An auto-labeling policy simulated what labels would be applied. |
+   | **File read** | A labeled file was opened or accessed. |
+   | **DLP policy matched** | Content triggered a Data Loss Prevention policy rule. |
+   | **File copied to clipboard** | A labeled file's content was copied (endpoint activity). |
+   | **File printed** | A labeled document was sent to a printer (endpoint activity). |
+   | **File copied to network share** | A labeled file was copied to a network location (endpoint activity). |
+
+    >**Note:** Activity explorer does not monitor retention activities for Exchange. Also, it may take some time for recent activities to appear in the explorer.
 
 ## Conclusion
 
