@@ -58,15 +58,21 @@ When a user interacts with **Microsoft Copilot for Microsoft 365** apps (such as
     - Information Protection Analysts
     - Information Protection Admins
 
-1. In the left navigation pane of the compliance portal, select **Content search**.
+1. In the **Microsoft Purview** portal, select **Solutions (1)** from the left navigation pane, and then choose **eDiscovery (2)**.
 
-1. On the **Content search** page, select **New search**.
+    ![](./media/adm-cop-7.7-g1.png)
 
-    ![](./media/content-search-page.png)
+1. Select **Content Search (1)**, and then choose **Create a search (2)**.
 
-1. On the **Name and description** page, enter a name for the search, an optional description that helps identify the search. The name of the search must be unique in your organization. Select **Next**.
+    ![](./media/adm-cop-7.7-g2.png)
 
-    ![](./media/content-search-name.png)
+1. Enter the following name in the **Search name (1)** field, and then select **Create (2)**.
+
+    ```
+    Copilot Search
+    ```
+
+    ![](./media/adm-cop-7.7-g3.png)
 
 1. On the **Locations** page, choose the content locations that you want to search. You can search mailboxes, sites, and public folders. Select **Next**.
 
