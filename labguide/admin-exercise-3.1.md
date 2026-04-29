@@ -1,5 +1,5 @@
 # Exercise 3.1: Administering M365 Copilot
-
+ 
 In this exercise, you will explore the **Microsoft 365 Admin Center** and learn how to verify **Microsoft Copilot** license assignments for users in your organization. This will help you understand how licenses are managed and monitored in a **Microsoft 365** environment.
 
 ## Managing Microsoft 365 Copilot Licenses in Admin Center
