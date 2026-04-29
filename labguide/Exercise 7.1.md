@@ -59,17 +59,15 @@ In this task, you will learn how Purview is used to implement sensitivity labels
 
 1. From the left navigation pane of **Microsoft Purview**, click on **Solutions (1)**,and select **Information protection (2)**
 
-   ![](./media/L1-P1-T1-S11.png)
+   ![](./media/adm-cop-3.1-g12.png)
    
 1. Under the **Information protection** panel, select **Sensitivity labels (1)**, and select **Turn on now (2)** in the **yellow** information box that indicates **Your organization has not turned on the ability to process content in Office online files that have encrypted sensitivity labels applied and are stored in OneDrive and SharePoint**. Once you do this, there can be a delay for the setting to propagate through the system.
 
    ![](./media/ex2-se-ap2-def-g3.png)
 
-1. On the **Sensitivity labels** page, select **Create a label**.
+1. In the **Information Protection** pane, select **Sensitivity labels (1)**, expand **Create (2)**, and then select **Label (3)**.
 
-   ![](./media/d1-e4-seco4-g1.png)
-
-   > **Note:** If you see the updated UI, select **+ Create** and then choose **Label** to start creating a new sensitivity label.
+   ![](./media/adm-cop-3.1-g13.png)
 
 1. Provide a name and description for your label. Select **Next (4)** at the bottom of the page.
 
