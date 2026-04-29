@@ -18,7 +18,45 @@ When a user interacts with **Microsoft Copilot for Microsoft 365** apps (such as
 
 ### Task 1: Creating and running a Search
 
-1. Navigate to `https://compliance.microsoft.com/` and sign in using the **CloudLabs provided credentials**.
+1. Navigate to the Microsoft Purview portal:
+
+   ```
+   https://purview.microsoft.com/
+   ```
+
+1. In the **Microsoft Purview** portal, in the left navigation pane, click on **Settings (1)**, expand **Roles & scopes (2)** and select **Roles groups (3)**
+
+    ![](./media/d1-e1-seco-g6.png)
+
+1. On **Role groups for Microsoft Purview solutions** window, search and select **Security Administrator (1)** then at the top select **Edit (2)**.
+
+    ![](./media/d1-e1-seco-g7.png)
+
+1. On the **Edit members of the role group** window, select **Choose users (1)**. On the **Choose users** blade, select **<inject key="AzureAdUserEmail"></inject> (2)** and then click **Select (3)**.
+
+     ![](./media/ex1-se-app-def-g13.png)
+    
+1. On the **Edit members of the role group** page, verify that **ODL_User <inject key="DeploymentID" enableCopy="false"/> (1)** is selected, and then select **Next (2)**.
+
+    ![](./media/d1-e1-seco-g8.png)
+
+1. On the **Review the role group and finish** page, review the details, and then select **Save**.
+
+    ![](./media/d1-e1-seco-g9.png) 
+
+1. On the **You successfully updated the role group** page, select **Done**.
+
+    ![](./media/d1-e1-seco-g10.png) 
+
+1.  Repeat the above **steps 1-6** to assign the following **Role Group** permission to the user:
+
+    - eDiscovery Manager
+    - Compliance Administrator
+    - Security Reader
+    - Information Protection
+    - Information Protection Investigators
+    - Information Protection Analysts
+    - Information Protection Admins
 
 1. In the left navigation pane of the compliance portal, select **Content search**.
 
