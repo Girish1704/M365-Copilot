@@ -38,23 +38,14 @@ Copilot events can be accessed in the **Audit** solution from the **Microsof
 
    ![](./media/d1-e1-seco-g11.png)
 
-1. On the **Audit** page, configure the search using the following conditions on the **New Search** tab.
+1. On the **New Search** tab, configure the required options, and then select **Search (5)**.
 
-    - **Date and time range:** Select a date and time range to display the activities that occurred within that period. The date and time are presented in Coordinated Universal Time (UTC). The last seven days are selected by default.
-    
-        ![](./media/adm-cop-7.3-g14.png)
+    - Set the **Date and time range (1)**.
+    - Select **Interacted with Copilot (2)** under Activities.
+    - Choose **ODL_User <inject key="DeploymentID" enableCopy="false"/> (3)** under Users.
+    - Set **Copilot (4)** as the workload.
 
-    - **Activities:** Select the activities to search for. Use the search box to search for activities to add to the list. Leave this box blank to return entries for all audited activities. To search for **Copilot events**, select **Copilot activities** and **Interacted with Copilot**.
-
-        ![](./media/adm-cop-7.3-g15.png)
-
-        You can also select Copilot as a workload.
-
-        ![](./media/audit-workload.png)
-
-    - **Users:** Select this box and start typing the name of users to display search results for. The audit log entries for the selected activities performed by the users you select in this box are displayed in the list of results. Leave this box blank to return entries for all users (and service accounts) in your organization.
-
-1. Select **Search** to run the search.
+        ![](./media/adm-cop-7.3-g16.png)
 
 1. The audit log search starts running. When the search is completed, audit records are displayed on the page. Select a record to display a flyout page with detailed properties.
 
