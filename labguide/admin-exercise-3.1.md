@@ -38,5 +38,4 @@ Follow these steps to verify the Copilot license assigned to a user from the adm
 
 In this exercise, you navigated to the **Microsoft 365 Admin Center** and verified the **Microsoft 365 Copilot** license assignment for a user. You reviewed the user's license details to confirm that the required licenses are in place. This is an important step in managing Copilot access within your organization.
 
-
 ## **Congratulations! you have successfully completed this exercise, please click on next**
