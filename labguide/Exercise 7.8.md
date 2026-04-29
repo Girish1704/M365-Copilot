@@ -20,21 +20,21 @@ When users within an organization leverage **Microsoft Copilot** to create promp
 
  Here are the steps to create a case on eDiscovery page in the **Microsoft Compliance portal**.
 
- 1. Navigate to `https://compliance.microsoft.com/` and sign in using the **CloudLabs provided credentials**.
+1. In the **Microsoft Purview** portal, select **Solutions (1)** from the left navigation pane, and then choose **eDiscovery (2)**.
 
-1. In the left navigation pane of the compliance portal, select **eDiscovery** and then, **Standard**.
+    ![](./media/adm-cop-7.7-g1.png)
 
-    ![](./media/ediscovery-standard.png)
+1. Select **Cases (1)**, and then choose **Create case (2)**.
 
-1. On the **eDiscovery (Standard)** page, select **Create a case**.
+    ![](./media/adm-cop-7.7-g19.png)
 
-    ![](./media/ediscovery-create-case.png)
+1. Enter the following name in the **Case name (1)** field, and then select **Create (2)**.
 
-1. On the **New case** flyout page, give the case a name (required) and then type an optional description. The case name must be unique in your organization.
+    ```
+    Copilot Case
+    ```
 
-    ![](./media/ediscovery-case-name.png)
-
-1. Select **Save** to create the case.
+    ![](./media/adm-cop-7.7-g4.png)
 
 ### Optional Task: Creating an eDiscovery hold
 
@@ -46,11 +46,13 @@ In addition to preserving content, another good reason to create **eDiscovery ho
 
 To create an **eDiscovery hold** that's associated with a **eDiscovery (Standard) case**, follow the given steps:
 
-1. Select the **eDiscovery case** that you created in the previous steps.
+1. Select **Hold policies (1)**, and then choose **New policy (2)**.
 
-1. On the **Home** page for the case, select the **Hold** tab, and then select **Create**.
+    ![](./media/adm-cop-7.7-g5.png)
 
-1. On the **Name your hold** wizard page, give the hold a name and add an optional description, and then select Next. The name of the hold must be unique in your organization.
+1. Enter the following name in the **Policy name (1)** field, and then select **Create (2)**.
+
+    ![](./media/adm-cop-7.7-g6.png)
 
 1. On the **Choose locations** wizard page, choose the content locations that you want to place on hold. You can place mailboxes, sites, and public folders on hold.
 

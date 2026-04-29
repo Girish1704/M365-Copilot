@@ -32,7 +32,11 @@ All admin setting updates may take up to 24 hours to reflect any changes.
 
 Once the admin provides access to let **M365 Copilot** access content from the web, the user need to manually turn it on as well. Follow the given steps below to allow the access to the web content for the Copilot:
 
-1. Navigate to `https://www.office.com` and sign in using the **CloudLabs provided credentials**. Select **Copilot** icon from the left pane.
+1. Navigate to the following URL and sign in using the **CloudLabs provided credentials**. Select **Copilot** icon from the left pane.
+
+    ```
+    https://www.office.com
+    ```
 
     ![](../labguide/media/office-page.png)
 

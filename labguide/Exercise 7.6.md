@@ -18,31 +18,34 @@ For **Auditing in M365 Copilot**, details are captured when users interact with 
 
 Copilot events can be accessed in the **Audit** solution from the **Microsoft Purview compliance portal**.
 
-1. Navigate to `https://compliance.microsoft.com/` and sign in using the CloudLabs provided credentials.
+1. Open a new browser tab, copy the following link, and paste it into the address bar to navigate to the Microsoft Purview portal:
 
-1. In the left navigation pane of the compliance portal, select **Show all** and then select **Audit**.
+   ```
+   https://purview.microsoft.com/
+   ```
 
-1. Select **Start recording user and admin activity** to configure the Audit logging activities, and grant confirmation, if required.
+1. On the **Welcome to the new Microsoft Purview portal** screen, click **Get started** to continue with the new unified Microsoft Purview experience.
 
-    ![](./media/audit-page.png)
+   ![](./media/d1-e1-seco-g1.png)
 
-1. On the **Audit** page, configure the search using the following conditions on the **New Search** tab.
+1. In the **Microsoft Purview** portal, in the left navigation pane, select **Solution (1)** and click **Audit (2)**.
 
-    - **Date and time range:** Select a date and time range to display the activities that occurred within that period. The date and time are presented in Coordinated Universal Time (UTC). The last seven days are selected by default.
-    
-        ![](./media/audit-page-2.png)
+   ![](./media/L6-T3-S6.png)
 
-    - **Activities:** Select the activities to search for. Use the search box to search for activities to add to the list. Leave this box blank to return entries for all audited activities. To search for **Copilot events**, select **Copilot activities** and **Interacted with Copilot**.
+1. On the Audit page, select the blue bar at the top of the page, which says **Start recording and admin  activity**. In the pop-up, select **Yes**.
 
-        ![](./media/audit-activity-names.png)
+   ![](./media/ex1-se-app-def-g14.png)
 
-        You can also select Copilot as a workload.
+   ![](./media/d1-e1-seco-g11.png)
 
-        ![](./media/audit-workload.png)
+1. On the **New Search** tab, configure the required options, and then select **Search (5)**.
 
-    - **Users:** Select this box and start typing the name of users to display search results for. The audit log entries for the selected activities performed by the users you select in this box are displayed in the list of results. Leave this box blank to return entries for all users (and service accounts) in your organization.
+    - Set the **Date and time range (1)**.
+    - Select **Interacted with Copilot (2)** under Activities.
+    - Choose **ODL_User <inject key="DeploymentID" enableCopy="false"/> (3)** under Users.
+    - Set **Copilot (4)** as the workload.
 
-1. Select **Search** to run the search.
+        ![](./media/adm-cop-7.3-g16.png)
 
 1. The audit log search starts running. When the search is completed, audit records are displayed on the page. Select a record to display a flyout page with detailed properties.
 
