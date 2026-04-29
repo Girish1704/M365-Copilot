@@ -34,12 +34,6 @@ Follow these steps to assign a Copilot license for an existing user from the adm
 
     ![](../labguide/media/adm-cop-3.1-g21.png)
 
-    >**Note:** In this case, you don't need to remove the licenses.
-
-1. Changes apply automatically after saving.
-
-Now the user's Copilot license assignment status will be updated.
-
 ## Conclusion
 
 In conclusion, you've gained an in-depth understanding of how to effectively manage Microsoft Copilot licenses through the **Microsoft 365 Admin Center**.
