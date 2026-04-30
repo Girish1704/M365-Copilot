@@ -69,118 +69,66 @@ When a user interacts with **Microsoft Copilot for Microsoft 365** apps (such as
 1. Enter the following name in the **Search name (1)** field, and then select **Create (2)**.
 
     ```
-    Copilot Search
+    CopilotSearch
     ```
 
-    ![](./media/adm-cop-7.7-g3.png)
+    ![](./media/adm-cop-4.6-g1.png)
 
-1. On the **Locations** page, choose the content locations that you want to search. You can search mailboxes, sites, and public folders. Select **Next**.
+1. In the **Data sources** section, select **Add tenant-wide sources**.
 
-    ![](./media/content-search-locations.png)
+    ![](./media/adm-cop-4.6-g2.png)
 
-    - **Exchange mailboxes:** Set the toggle to **On**. The option to search all Exchange mailboxes is automatically selected. If needed, select **Choose users, groups, or teams** to specify the mailboxes to search. Use the search box to find user mailboxes and distribution groups. You can also search the mailbox associated with a Microsoft Team (for channel messages), Microsoft 365 Group, and Viva Engage Group. All Microsoft Copilot for Microsoft 365 activity data (user prompts and Copilot responses) generated in supported Microsoft 365 apps and services is stored in custodian mailboxes.
+1. In the **Manage sources** pane, select all options under **Name (1)**, and then select **Save (2)**.
 
-    - **SharePoint sites:** Set the toggle to **On**. The option to search all SharePoint sites is automatically selected. Select **Choose sites** to specify SharePoint sites and OneDrive sites to search. Enter the URL for each site that you want to search. You can also add the URL for the SharePoint site for a Microsoft Team, Microsoft 365 Group, or Viva Engage Group.
+    ![](./media/adm-cop-4.6-g3.png)
 
-    - **Exchange public folders:** Set the toggle to **On**. The option to search all Exchange public folders is automatically selected to search all public folders in your Exchange Online organization. You can't choose specific public folders to search. Leave the toggle switch off if you don't want search all public folders.
+1. In the **Condition builder**, select the **Delete** icon next to the existing keyword condition.
 
-    - **Add App Content for On-Premises Users:** Keep this checkbox selected to search for Teams content for on-premises users. For example, if you search all Exchange mailboxes in the organization and this checkbox is selected, the cloud-based storage used to store Teams chat data for on-premises users will be included in the scope of the search.
+    ![](./media/adm-cop-4.6-g4.png)
 
-1. On the **Conditions** page, enter a keyword query and add conditions to the search query if necessary.
+1. In the **Condition builder**, select **Add conditions (1)**, and then choose **Item class (2)**.
 
-    - Specify keywords, message properties such as sent and received dates, or document properties such as file names or the date that a document was last changed. You can use more complex queries that use a Boolean operator, such as **AND, OR, NOT**, and **NEAR**. If you leave the keyword box empty, all content located in the specified content locations is included in the search results.
+    ![](./media/adm-cop-4.6-g5.png)
 
-    - Alternatively, you can select the **Show keyword list** checkbox and the enter a keyword in each row. If you do this, the keywords on each row are connected by a logical operator (c:s) that is similar in functionality to the OR operator in the search query that's created.
+1. In the **Condition builder**, set **Contains any of (1)**, enter **Copilot activity (2)**, and then select the suggested **Copilot activity (3)**.
 
-    - You can add search conditions by selecting **Add condition** to narrow a search and return a more refined set of results. Each condition adds a clause to the search query that is created and run when you start the search. A condition is logically connected to the keyword query (specified in the keyword box) by a logical operator (c:c) that is similar in functionality to the AND operator. That means that items have to satisfy both the keyword query and one or more conditions to be included in the results. This is how conditions help to narrow your results.
+    ![](./media/adm-cop-4.6-g6.png)
 
-    For **content search**, because user prompts to **Copilot** and responses from **Copilot** are stored in a user's mailbox, they can be searched and retrieved when the user's mailbox is selected as the source for a search query. Select and retrieve this data from the source mailbox by selecting **Add condition > Type > Copilot interactions**.
+1. In the **Query** pane, select **Run query**.
 
-    ![](./media/content-search-conditions.png)
-    
-    Select **Next**.
+    ![](./media/adm-cop-4.6-g7.png)
 
-1. Review the search settings, and then select **Submit** to start the search.
+1. In the **Choose search results** pane, select **Statistics (1)**, and then select **Run query (2)**.
 
-    ![](./media/content-search-review.png)
+    ![](./media/adm-cop-4.6-g8.png)
 
-1. After some time, your Content search will be created. Click on **Done** and return to the **Content search** page.
+1. Wait for the search to complete, and then review the results in the **Statistics** tab.
 
-    ![](./media/content-search-created.png)
+    ![](./media/adm-cop-4.6-g9.png)
 
-1. Select the newly created content search to see more details about it.
+    > **Note:** The search may take 5 to 10 minutes to complete.
 
-    ![](./media/content-search-details.png)
-
-### Task 2: Exporting the report
+### Task 2: Export and downloading the report
 
 After a **Content search** is successfully run, you can export the search report to your local computer. When you export a report, the report files are downloaded to a folder on your local computer that has the same name as the **Content Search**, but that's appended with **_ReportsOnly**. For example, if the Content Search is named **ContosoCase0815**, then the report is downloaded to a folder named **ContosoCase0815_ReportsOnly**.
 
 Follow the given steps to download the content search report of your recently generated content search:
 
-1. On the **Actions** menu at the bottom of the search flyout page of your Content search, select **Export report**.
+1. In the **CopilotSearch** page, select **Export**.
 
-    ![](./media/content-search-export-report.png)
+    ![](./media/adm-cop-4.6-g10.png)
 
-1. Under **Output** options, choose one of the following options:
+1. In the **Export** pane, enter **CopilotActivityExport** in **Export name (1)**, keep the default options, and then select **Export (2)**.
 
-    - **All items, excluding ones that have unrecognized format, are encrypted, or weren't indexed for other reasons:** This option only exports information about indexed items.
+    ![](./media/adm-cop-4.6-g11.png)
 
-    - **All items, including ones that have unrecognized format, are encrypted, or weren't indexed for other reasons:** This option exports information about indexed and unindexed items.
+1. In the **Exports** tab, select **CopilotActivityExport (2)**.
 
-    - **Only items that have an unrecognized format, are encrypted, or weren't indexed for other reasons.** This option only exports information about unindexed items.
+    ![](./media/adm-cop-4.6-g12.png)
 
-    Select **Option 2** to include all the items.
+1. In the **CopilotActivityExport** pane, select **Download**.
 
-    ![](./media/content-search-report-options.png)
-
-1. Select **Generate report**.
-
-    The search reports are prepared for downloading, which means the report documents are uploaded to an Azure Storage location in the Microsoft cloud. This may take several minutes.
-
-    ![](./media/content-search-generate-report.png)
-
-1. Click **Ok** when prompted.
-
-    ![](./media/content-search-report-ok.png)
-
-### Task 3: Downloading the report
-
-Now, you need to download the report from the Azure Storage area to your local computer.
-
-1. On the **Content search** page in the compliance portal, select the **Exports** tab.
-
-    ![](./media/content-search-export-tab.png)
-
-1. Select the export job that you created earlier, ending with **_ReportsOnly**.
-
-    ![](./media/content-search-report-created.png)
-
-1. Under **Export Key** section, select **Copy to clipboard**. You will need this key to download the search report.
-
-    ![](./media/content-search-report-key.png)
-
-1. At the top of the flyout page, select **Download report**.
-
-    ![](./media/content-search-download-report.png)
-
-1. If you're prompted to install the **eDiscovery Export Tool**, select **Install**.
-
-1. In the eDiscovery Export Tool, do the following:
-
-    ![](./media/ediscoveryexporttool.png)
-
-    - Paste the export key that you copied in the appropriate box.
-
-    - Select **Browse** to specify the location where you want to download the search report files.
-
-1. Select **Start** to download the search results to your computer.
-
-1. Once the report gets downloaded, goto the location of the downloaded folder and open it.
-
-    ![](./media/content-search-downloaded-report.png)
-
-1. Open the **Results.csv** file and go through the report.
+    ![](./media/adm-cop-4.6-g13.png)
 
 ## Conclusion
 
