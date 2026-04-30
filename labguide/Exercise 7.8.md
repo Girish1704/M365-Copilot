@@ -52,7 +52,11 @@ To create an **eDiscovery hold** that's associated with a **eDiscovery (Standard
 
 1. Enter the following name in the **Policy name (1)** field, and then select **Create (2)**.
 
-    ![](./media/adm-cop-7.7-g6.png)
+    ```
+    CopilotHoldPolicy
+    ```
+
+    ![](./media/adm-cop-4.6-g14.png)
 
 1. On the **Choose locations** wizard page, choose the content locations that you want to place on hold. You can place mailboxes, sites, and public folders on hold.
 
@@ -81,130 +85,6 @@ To create an **eDiscovery hold** that's associated with a **eDiscovery (Standard
 1. After some time, your **eDsiscovery hold** will be created. Click on **Done** and return to the **Hold** page.
 
 1. Select your newly created hold and check it got created properly.
-
-### Task 2: Creating a search in eDiscovery
-
-After a **Microsoft Purview eDiscovery (Standard)** case is created, you can create and run one or more searches for content relevant to the case. Searches associated with a **eDiscovery (Standard)** case aren't listed on the Content search page in the **Microsoft Purview compliance portal**. These searches are listed on the **Searches** page of the **eDiscovery (Standard)** case the searches are associated with. This also means that searches associated with a case can only be accessed by case members.
-
-To create a **eDiscovery (Standard)** search, follow the given steps:
-
-1. Select the **eDiscovery case** that you created in the previous steps.
-
-1. On the **Home** page for the case, select the **Searches** tab, and then select **New search**.
-
-    ![](./media/ediscovery-search-create.png)
-
-1. In the **New search** wizard, type a name for the search, and an optional description that helps identify the search. The name of the search must be unique in your organization. Select **Next**.
-
-    ![](./media/ediscovery-search-name.png)
-
-1. On the **Locations** page, choose the content locations that you want to search. You can search mailboxes, sites, and public folders.
-
-    ![](./media/ediscovery-search-locations.png)
-
-    - **Exchange mailboxes:** Set the toggle to **On**. The option to put all Exchange mailboxes on hold is automatically selected. If you need to specify specific mailboxes to place on hold, **Choose users, groups, or teams**. Use the search box to find user mailboxes and distribution groups (to place a hold on the mailboxes of group members) to place on hold. You can also search the mailbox associated with a Microsoft Team (for channel messages), Office 365 Group, and Viva Engage Group. All Copilot activity data (user prompts and Copilot responses) generated in supported Microsoft 365 apps and services is stored in custodian mailboxes.
-
-    - **SharePoint sites:** Set the toggle to **On**. The option to put all SharePoint sites on hold is automatically selected. If you need to specify specific SharePoint sites and OneDrive accounts to place on hold,  **Choose sites**. Type the URL for each site that you want to place on hold. You can also add the URL for the SharePoint site for a Microsoft Team, Office 365 Group, or Viva Engage Group.
-
-    - **Exchange public folders:** Set the toggle to **On** to put all public folders in your Exchange Online organization on hold. You can't choose specific public folders to put on hold. Leave the toggle switch off if you don't want to put a hold on public folders.
-
-    - **Add App Content for On-Premises Users:** Keep this checkbox selected to search for Teams content for on-premises users. For example, if you search all Exchange mailboxes in the organization and this checkbox is selected, the cloud-based storage used to store Teams chat data for on-premises users will be included in the scope of the search.
-
-    >**Note:** Select the **Locations on hold** option ONLY if you have previously created any hold, to search all the content locations that have been placed on hold. If the case contains multiple eDiscovery holds, the content locations from all holds are searched when you select this option. Additionally, if a content location was placed on a query-based hold, only the items that match the hold query are searched when you run the search. In other words, only the content that matches both the hold criteria and the search criteria is returned with the search results.
-
-    Select **Next**.
-
-1. On the **Conditions** page, enter a keyword query and add conditions to the search query if necessary.
-
-    - Specify keywords, message properties such as sent and received dates, or document properties such as file names or the date that a document was last changed. You can use more complex queries that use a Boolean operator, such as **AND, OR, NOT**, and **NEAR**. If you leave the keyword box empty, all content located in the specified content locations is included in the search results.
-
-    - Alternatively, you can select the **Show keyword list** checkbox and the enter a keyword in each row. If you do this, the keywords on each row are connected by a logical operator (c:s) that is similar in functionality to the OR operator in the search query that's created.
-
-    - You can add search conditions by selecting **Add condition** to narrow a search and return a more refined set of results. Each condition adds a clause to the search query that is created and run when you start the search. A condition is logically connected to the keyword query (specified in the keyword box) by a logical operator (c:c) that is similar in functionality to the AND operator. That means that items have to satisfy both the keyword query and one or more conditions to be included in the results. This is how conditions help to narrow your results.
-
-    For **content search**, because user prompts to **Copilot** and responses from **Copilot** are stored in a user's mailbox, they can be searched and retrieved when the user's mailbox is selected as the source for a search query. Select and retrieve this data from the source mailbox by selecting **Add condition > Type > Copilot interactions**.
-
-    ![](./media/content-search-conditions.png)
-    
-    Select **Next**.
-
-1. Review the search settings, and then select **Submit** to start the search.
-
-    ![](./media/ediscovery-search-review.png)
-
-1. After some time, your Content search will be created. Click on **Done** and return to the **Content search** page.
-
-1. Select the newly created content search to see more details about it.
-
-    ![](./media/ediscovery-search-details.png)
-
-### Task 3: Exporting the report
-
-After a **Content search** is successfully run, you can export the search report to your local computer. When you export a report, the report files are downloaded to a folder on your local computer that has the same name as the **Content Search**, but that's appended with **_ReportsOnly**. For example, if the Content Search is named **ContosoCase0815**, then the report is downloaded to a folder named **ContosoCase0815_ReportsOnly**.
-
-Follow the given steps to download the content search report of your recently generated content search:
-
-1. On the **Actions** menu at the bottom of the search flyout page of your Content search, select **Export report**.
-
-    ![](./media/content-search-export-report.png)
-
-1. Under **Output** options, choose one of the following options:
-
-    ![](./media/content-search-report-options.png)
-
-    - **All items, excluding ones that have unrecognized format, are encrypted, or weren't indexed for other reasons:** This option only exports information about indexed items.
-
-    - **All items, including ones that have unrecognized format, are encrypted, or weren't indexed for other reasons:** This option exports information about indexed and unindexed items.
-
-    - **Only items that have an unrecognized format, are encrypted, or weren't indexed for other reasons.** This option only exports information about unindexed items.
-
-    Select **Option 2** to include all the items.
-
-1. Select **Generate report**.
-
-    ![](./media/content-search-generate-report.png)
-
-    The search reports are prepared for downloading, which means the report documents are uploaded to an Azure Storage location in the Microsoft cloud. This may take several minutes.
-
-1. Click **Ok** when prompted.
-
-    ![](./media/content-search-report-ok.png)
-
-### Task 4: Downloading the report
-
-Now, you need to download the report from the Azure Storage area to your local computer.
-
-1. On the **eDiscovery** page in the compliance portal, select your case, and select the **Exports** tab.
-
-1. Select the export job that you created earlier, ending with **_ReportsOnly**.
-
-    ![](./media/ediscovery-report.png)
-
-1. Under **Export Key** section, select **Copy to clipboard**. You will need this key to download the search report.
-
-    ![](./media/content-search-report-key.png)
-
-1. At the top of the flyout page, select **Download report**.
-
-    ![](./media/content-search-download-report.png)
-
-1. If you're prompted to install the **eDiscovery Export Tool**, select **Install**.
-
-1. In the eDiscovery Export Tool, do the following:
-
-    ![](./media/ediscoveryexporttool.png)
-
-    - Paste the export key that you copied in the appropriate box.
-
-    - Select **Browse** to specify the location where you want to download the search report files.
-
-1. Select **Start** to download the search results to your computer.
-
-1. Once the report gets downloaded, goto the location of the downloaded folder and open it.
-
-    ![](./media/content-search-downloaded-report.png)
-
-1. Open the **Results.csv** file and go through the report.
 
 ## Conclusion
 
