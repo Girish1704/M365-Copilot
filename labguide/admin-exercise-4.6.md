@@ -1,10 +1,8 @@
-# Exercise 4.6: Reviewing Security and Compliance in Copilot Using Content Search (Read Only)
+# Exercise 4.6: Reviewing Security and Compliance in Copilot Using Content Search
 
 ## Introduction
 
-**Microsoft Copilot** is designed with security and compliance in mind. It does not store or share any of the user's data. It only uses the data or information that the user explicitly provides as input or context. It also respects the user's privacy and preferences, and does not collect any personal or sensitive information by itself.
-
-Given below are the capabilities from Microsoft Purview which strengthen your data security and compliance for Microsoft Copilot for Microsoft 365:
+In this exercise, you will use the **Content Search** eDiscovery tool in **Microsoft Purview** to search for Copilot interaction data stored in your organization. You will assign the required role group permissions, create and run a content search filtered for Copilot activity, and export the results.
 
 ## Using Content Search in Microsoft 365 Copilot
 
@@ -14,9 +12,9 @@ After you run a search, the number of content locations and an estimated number 
 
 When a user interacts with **Microsoft Copilot for Microsoft 365** apps (such as Word, PowerPoint, Excel, OneNote, Loop, or Whiteboard), data about these interactions is stored. The stored data includes the user's prompt, how Copilot responded, and information used to ground Copilot's response. **For example**, this stored data provides users with Copilot interaction history in Microsoft Copilot with Graph-grounded chat and meetings in Microsoft Teams. This data is processed and stored in alignment with contractual commitments with your organization’s other content in Microsoft 365. The data is encrypted while it's stored and isn't used to train foundation LLMs, including those used by **Microsoft Copilot for Microsoft 365**.
 
->**Note:** You are not expected to perform the following steps. This information is provided solely to give you an understanding of the process of creating and using Content Search in the Purview portal. Your access has been set to Global Reader, meaning you won't be able to make changes. These instructions are for viewing only, reflecting the read-only access granted in your environment.
+### Task 1: Assign role permissions and run a Content Search
 
-### Task 1: Creating and running a Search
+In this task, you will assign the required role group permissions to your user account, then create and run a content search to find Copilot activity data.
 
 1. Navigate to the Microsoft Purview portal:
 
@@ -48,7 +46,7 @@ When a user interacts with **Microsoft Copilot for Microsoft 365** apps (such as
 
     ![](./media/d1-e1-seco-g10.png) 
 
-1.  Repeat the above **steps 1-6** to assign the following **Role Group** permission to the user:
+1.  Repeat the above **steps 2-7** to assign the following **Role Group** permissions to your user:
 
     - eDiscovery Manager
     - Compliance Administrator
@@ -108,11 +106,11 @@ When a user interacts with **Microsoft Copilot for Microsoft 365** apps (such as
 
     > **Note:** The search may take 5 to 10 minutes to complete.
 
-### Task 2: Export and downloading the report
+### Task 2: Export and download the report
 
-After a **Content search** is successfully run, you can export the search report to your local computer. When you export a report, the report files are downloaded to a folder on your local computer that has the same name as the **Content Search**, but that's appended with **_ReportsOnly**. For example, if the Content Search is named **ContosoCase0815**, then the report is downloaded to a folder named **ContosoCase0815_ReportsOnly**.
+After a content search is successfully run, you can export the search report to your local computer. The report files are downloaded to a folder with the same name as the content search, appended with **_ReportsOnly**.
 
-Follow the given steps to download the content search report of your recently generated content search:
+Follow the steps below to export and download the content search report:
 
 1. In the **CopilotSearch** page, select **Export**.
 
@@ -132,7 +130,6 @@ Follow the given steps to download the content search report of your recently ge
 
 ## Conclusion
 
-In conclusion, the utilization of **Content Search in Microsoft 365 Copilot** via the Microsoft Purview compliance portal serves as a powerful tool for organizations to uphold data security and compliance standards. This capability empowers users to search and analyze in-place content, including email, documents, and instant messaging conversations that involve interactions with **M365 Copilot**. By incorporating these practices into their routine operations, organizations can ensure effective data management, compliance with regulations, and swift response to security events. The privacy and security principles embedded in **Microsoft Copilot** remain intact, reinforcing a commitment to user privacy and data protection.
-
+In this exercise, you assigned the required role group permissions, created a content search in **Microsoft Purview** to find Copilot interaction data, and exported the results. Content Search allows you to locate and review Copilot prompts and responses stored across your Microsoft 365 environment, helping you meet compliance and investigation requirements.
 
 ## **Congratulations! you have successfully completed this exercise, please click on next**
