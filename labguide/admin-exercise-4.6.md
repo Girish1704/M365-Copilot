@@ -1,135 +1,89 @@
-# Exercise 4.6: Reviewing Security and Compliance in Copilot Using Content Search
+# Exercise 4.6: Reviewing Security and Compliance in Copilot Using eDiscovery
 
 ## Introduction
 
-In this exercise, you will use the **Content Search** eDiscovery tool in **Microsoft Purview** to search for Copilot interaction data stored in your organization. You will assign the required role group permissions, create and run a content search filtered for Copilot activity, and export the results.
+In this exercise, you will use **Microsoft Purview eDiscovery** to create a case and place a hold on content locations that contain **Microsoft 365 Copilot** interaction data. You will learn how to preserve and search for Copilot prompts and responses stored in user mailboxes.
 
-## Using Content Search in Microsoft 365 Copilot
+## Using eDiscovery in M365 Copilot
 
-You can use the Content search eDiscovery tool in the **Microsoft Purview compliance portal** to search for in-place content such as email, documents, and instant messaging conversations including the responses with **M365 Copilot** in your organization.
+**Microsoft Purview eDiscovery (Standard)** is a tool that allows you to search and export content across Microsoft 365 services, including **Microsoft 365 Copilot**. You can also place an eDiscovery hold on content locations such as Exchange mailboxes, SharePoint sites, OneDrive accounts, and Microsoft Teams.
 
-After you run a search, the number of content locations and an estimated number of search results are displayed on the search flyout page. You can quickly view statistics, such as the content locations that have the most items that match the search query. After you run a search, you can preview the results or export them to a local computer.
+When you use **Microsoft Copilot**, your prompts and responses are stored in your mailbox. This data may contain sensitive or confidential information. eDiscovery helps you identify, preserve, collect, review, and export this data for legal, regulatory, or security investigations.
 
-When a user interacts with **Microsoft Copilot for Microsoft 365** apps (such as Word, PowerPoint, Excel, OneNote, Loop, or Whiteboard), data about these interactions is stored. The stored data includes the user's prompt, how Copilot responded, and information used to ground Copilot's response. **For example**, this stored data provides users with Copilot interaction history in Microsoft Copilot with Graph-grounded chat and meetings in Microsoft Teams. This data is processed and stored in alignment with contractual commitments with your organization’s other content in Microsoft 365. The data is encrypted while it's stored and isn't used to train foundation LLMs, including those used by **Microsoft Copilot for Microsoft 365**.
+eDiscovery supports searching for Copilot interactions across Word, Excel, PowerPoint, Teams, and other Microsoft 365 apps. You can also filter specifically for Copilot interactions when building your search query.
 
-### Task 1: Assign role permissions and run a Content Search
+### Task 1: Create an eDiscovery Case
 
-In this task, you will assign the required role group permissions to your user account, then create and run a content search to find Copilot activity data.
-
-1. Navigate to the Microsoft Purview portal:
-
-   ```
-   https://purview.microsoft.com/
-   ```
-
-1. In the **Microsoft Purview** portal, in the left navigation pane, click on **Settings (1)**, expand **Roles & scopes (2)** and select **Roles groups (3)**
-
-    ![](./media/d1-e1-seco-g6.png)
-
-1. On **Role groups for Microsoft Purview solutions** window, search and select **Security Administrator (1)** then at the top select **Edit (2)**.
-
-    ![](./media/d1-e1-seco-g7.png)
-
-1. On the **Edit members of the role group** window, select **Choose users (1)**. On the **Choose users** blade, select **<inject key="AzureAdUserEmail"></inject> (2)** and then click **Select (3)**.
-
-     ![](./media/ex1-se-app-def-g13.png)
-    
-1. On the **Edit members of the role group** page, verify that **ODL_User <inject key="DeploymentID" enableCopy="false"/> (1)** is selected, and then select **Next (2)**.
-
-    ![](./media/d1-e1-seco-g8.png)
-
-1. On the **Review the role group and finish** page, review the details, and then select **Save**.
-
-    ![](./media/d1-e1-seco-g9.png) 
-
-1. On the **You successfully updated the role group** page, select **Done**.
-
-    ![](./media/d1-e1-seco-g10.png) 
-
-1.  Repeat the above **steps 2-7** to assign the following **Role Group** permissions to your user:
-
-    - eDiscovery Manager
-    - Compliance Administrator
-    - Security Reader
-    - Information Protection
-    - Information Protection Investigators
-    - Information Protection Analysts
-    - Information Protection Admins
+In this task, you will create a new eDiscovery case in the **Microsoft Purview** portal.
 
 1. In the **Microsoft Purview** portal, select **Solutions (1)** from the left navigation pane, and then choose **eDiscovery (2)**.
 
     ![](./media/adm-cop-7.7-g1.png)
 
-1. Select **Content Search (1)**, and then choose **Create a search (2)**.
+1. Select **Cases (1)**, and then choose **Create case (2)**.
 
-    ![](./media/adm-cop-7.7-g2.png)
+    ![](./media/adm-cop-7.7-g19.png)
 
-1. Enter the following name in the **Search name (1)** field, and then select **Create (2)**.
+1. Enter the following name in the **Case name (1)** field, and then select **Create (2)**.
 
     ```
-    CopilotSearch
+    Copilot Case
     ```
 
-    ![](./media/adm-cop-4.6-g1.png)
+    ![](./media/adm-cop-7.7-g4.png)
 
-1. In the **Data sources** section, select **Add tenant-wide sources**.
+### Optional Task: Create an eDiscovery hold
 
-    ![](./media/adm-cop-4.6-g2.png)
+After creating an eDiscovery case, you can place a hold (also called an **eDiscovery hold**) on content locations to preserve content that may be relevant to your investigation. Content locations include Exchange mailboxes, SharePoint sites, OneDrive accounts, and the mailboxes and sites associated with Microsoft Teams and Microsoft 365 Groups, along with **Microsoft 365 Copilot** data.
 
-1. In the **Manage sources** pane, select all options under **Name (1)**, and then select **Save (2)**.
+You can preserve all content in specific locations, or create a query-based hold to preserve only the content that matches your hold query. Another benefit of creating a hold is that you can quickly search the content locations on hold when running searches later.
 
-    ![](./media/adm-cop-4.6-g3.png)
+>**Note:** After you create an eDiscovery hold, it may take up to 24 hours for the hold to take effect.
 
-1. In the **Condition builder**, select the **Delete** icon next to the existing keyword condition.
+Follow the steps below to create an eDiscovery hold associated with your case:
 
-    ![](./media/adm-cop-4.6-g4.png)
+1. Select **Hold policies (1)**, and then choose **New policy (2)**.
 
-1. In the **Condition builder**, select **Add conditions (1)**, and then choose **Item class (2)**.
+    ![](./media/adm-cop-7.7-g5.png)
 
-    ![](./media/adm-cop-4.6-g5.png)
+1. Enter the following name in the **Policy name (1)** field, and then select **Create (2)**.
 
-1. In the **Condition builder**, set **Contains any of (1)**, enter **Copilot activity (2)**, and then select the suggested **Copilot activity (3)**.
+    ```
+    CopilotHoldPolicy
+    ```
 
-    ![](./media/adm-cop-4.6-g6.png)
+    ![](./media/adm-cop-4.6-g14.png)
 
-1. In the **Query** pane, select **Run query**.
+1. On the **Choose locations** wizard page, choose the content locations that you want to place on hold.
 
-    ![](./media/adm-cop-4.6-g7.png)
+    - **Exchange mailboxes:** Set the toggle to **On** and then select **Choose users, groups, or teams** to specify the mailboxes to place on hold. Use the search box to find user mailboxes and distribution groups.
 
-1. In the **Choose search results** pane, select **Statistics (1)**, and then select **Run query (2)**.
+    - **SharePoint sites:** Set the toggle to **On** and then select **Choose sites** to specify SharePoint sites and OneDrive accounts to place on hold. Type the URL for each site you want to place on hold.
 
-    ![](./media/adm-cop-4.6-g8.png)
+    - **Exchange public folders:** You can keep this toggle **Off** unless you need to hold public folders.
 
-1. Wait for the search to complete, and then review the results in the **Statistics** tab.
+    >**Note:** When adding Exchange mailboxes or SharePoint sites to a hold, you must select at least one specific mailbox or site. If you set the toggle to **On** but do not select any items, the hold will be created without any content locations.
 
-    ![](./media/adm-cop-4.6-g9.png)
+    Select **Next**.
 
-    > **Note:** The search may take 5 to 10 minutes to complete.
+1. To create a query-based hold for **Microsoft 365 Copilot** interactions, complete the following:
 
-### Task 2: Export and download the report
+    - In the **Keywords** box, type a query to preserve only the content that matches the query criteria. You can specify keywords, email message properties, or site properties such as file names. You can also use Boolean operators such as **AND**, **OR**, or **NOT**.
 
-After a content search is successfully run, you can export the search report to your local computer. The report files are downloaded to a folder with the same name as the content search, appended with **_ReportsOnly**.
+    - Select **Add condition** to narrow the query. Each condition adds a clause to the search query. For example, you can specify a date range to preserve only content created within that range.
 
-Follow the steps below to export and download the content search report:
+    - Since Copilot prompts and responses are stored in a user's mailbox, you can retrieve this data by selecting **Add condition > Type > Copilot interactions**.
 
-1. In the **CopilotSearch** page, select **Export**.
+    Select **Next**.
 
-    ![](./media/adm-cop-4.6-g10.png)
+1. Review your settings, and then select **Submit**.
 
-1. In the **Export** pane, enter **CopilotActivityExport** in **Export name (1)**, keep the default options, and then select **Export (2)**.
+1. After some time, your eDiscovery hold will be created. Select **Done** and return to the **Hold** page.
 
-    ![](./media/adm-cop-4.6-g11.png)
-
-1. In the **Exports** tab, select **CopilotActivityExport (2)**.
-
-    ![](./media/adm-cop-4.6-g12.png)
-
-1. In the **CopilotActivityExport** pane, select **Download**.
-
-    ![](./media/adm-cop-4.6-g13.png)
+1. Select your newly created hold and verify it was created correctly.
 
 ## Conclusion
 
-In this exercise, you assigned the required role group permissions, created a content search in **Microsoft Purview** to find Copilot interaction data, and exported the results. Content Search allows you to locate and review Copilot prompts and responses stored across your Microsoft 365 environment, helping you meet compliance and investigation requirements.
+In this exercise, you created an eDiscovery case in **Microsoft Purview** and placed a hold on content locations to preserve Copilot interaction data. You learned how to configure a query-based hold to target Copilot interactions specifically, and how to use eDiscovery to search for and preserve prompts and responses stored in user mailboxes.
 
 ## **Congratulations! you have successfully completed this exercise, please click on next**

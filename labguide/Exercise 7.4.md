@@ -1,4 +1,4 @@
-# Exercise 4.3: Reviewing Security and Compliance in Copilot Using Customer Keys (Read Only)
+# Exercise 4.2: Reviewing Security and Compliance in Copilot Using Customer Keys (Read Only)
 
 ## Introduction
 

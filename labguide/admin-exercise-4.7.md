@@ -1,89 +1,99 @@
-# Exercise 4.7: Reviewing Security and Compliance in Copilot Using eDiscovery
+# Exercise 4.7: Reviewing Security and Compliance in Copilot using Retention Policies
 
 ## Introduction
 
-In this exercise, you will use **Microsoft Purview eDiscovery** to create a case and place a hold on content locations that contain **Microsoft 365 Copilot** interaction data. You will learn how to preserve and search for Copilot prompts and responses stored in user mailboxes.
+In this exercise, you will create a **retention policy** in **Microsoft Purview** to manage the lifecycle of **Microsoft 365 Copilot** interaction data. You will configure the policy to retain and then delete Copilot messages after a specified period.
 
-## Using eDiscovery in M365 Copilot
+## Retention and Deletion in Microsoft 365 Copilot
 
-**Microsoft Purview eDiscovery (Standard)** is a tool that allows you to search and export content across Microsoft 365 services, including **Microsoft 365 Copilot**. You can also place an eDiscovery hold on content locations such as Exchange mailboxes, SharePoint sites, OneDrive accounts, and Microsoft Teams.
+You can use a retention policy to retain and delete messages from **Microsoft Copilot for Microsoft 365**. Copilot messages (your prompts and Copilot responses) are stored in a hidden folder in your Exchange mailbox. This hidden folder is not directly accessible to you or administrators, but compliance administrators can search it with eDiscovery tools.
 
-When you use **Microsoft Copilot**, your prompts and responses are stored in your mailbox. This data may contain sensitive or confidential information. eDiscovery helps you identify, preserve, collect, review, and export this data for legal, regulatory, or security investigations.
+After a retention policy is configured, a timer job from the Exchange service periodically evaluates items in this hidden folder. The timer job typically takes 1 to 7 days to run. When items have expired their retention period, they are moved to the **SubstrateHolds** folder (a hidden folder used to store soft-deleted items) before they are permanently deleted.
 
-eDiscovery supports searching for Copilot interactions across Word, Excel, PowerPoint, Teams, and other Microsoft 365 apps. You can also filter specifically for Copilot interactions when building your search query.
+The following diagram shows the retention lifecycle flow:
 
-### Task 1: Create an eDiscovery Case
+![](./media/copilotretentionlifecycle.png)
 
-In this task, you will create a new eDiscovery case in the **Microsoft Purview** portal.
+For the two paths in the diagram:
 
-1. In the **Microsoft Purview** portal, select **Solutions (1)** from the left navigation pane, and then choose **eDiscovery (2)**.
+1. **If messages are removed from Copilot**, the message is moved to the SubstrateHolds folder where it remains for at least 1 day. When the retention period expires, the message is permanently deleted the next time the timer job runs (typically 1 to 7 days).
 
-    ![](./media/adm-cop-7.7-g1.png)
+1. **If messages remain in Copilot** after the retention period expires, the message is copied to the SubstrateHolds folder. This typically takes 1 to 7 days from the expiry date. The message is then permanently deleted the next time the timer job runs.
 
-1. Select **Cases (1)**, and then choose **Create case (2)**.
+>**Note:** Messages stored in mailboxes, including the hidden folders, are searchable by eDiscovery tools until they are permanently deleted from the SubstrateHolds folder.
 
-    ![](./media/adm-cop-7.7-g19.png)
+### Content paths for retain-only retention policy
 
-1. Enter the following name in the **Case name (1)** field, and then select **Create (2)**.
+1. **If messages are removed from Copilot**, the message is moved to the SubstrateHolds folder. If the policy is configured to retain forever, the item remains there. If the retention period has an end date and it expires, the message is permanently deleted the next time the timer job runs.
+
+1. **If messages remain in Copilot**, nothing happens before or after the retention period. The message stays in its original location.
+
+### Content paths for delete-only retention policy
+
+1. **If messages are removed from Copilot** during the retention period, the message is moved to the SubstrateHolds folder and permanently deleted after at least 1 day when the timer job runs.
+
+1. **If messages remain in Copilot** after the retention period expires, the message is copied to the SubstrateHolds folder and permanently deleted after at least 1 day when the timer job runs.
+
+### Task 1: Create and configure a Retention Policy
+
+A retention policy allows you to decide whether to retain content, delete content, or retain and then delete content by assigning retention settings at the container level. For the **Teams chats and Copilot interactions** location, this includes your prompts to **Microsoft Copilot for Microsoft 365** and the responses from Copilot.
+
+In this task, you will create a retention policy for all interactions with **Microsoft 365 Copilot**.
+
+1. In the **Microsoft Purview** portal, select **Solutions (1)** from the left navigation pane, and then choose **Data Lifecycle Management (2)**.
+
+    ![](./media/adm-cop-7.7-g7.png)
+
+1. Expand **Policies (1)**, and then select **Retention policies (2)**.
+
+    ![](./media/adm-cop-7.7-g8.png)
+
+1. Select **New retention policy**.
+
+    ![](./media/adm-cop-7.7-g9.png)
+
+1. Enter the following name in the **Name (1)** field, and then select **Next (2)**.
 
     ```
-    Copilot Case
+    CopilotRetentionPolicy
     ```
 
-    ![](./media/adm-cop-7.7-g4.png)
+    ![](./media/adm-cop-7.7-g10.png)
 
-### Optional Task: Create an eDiscovery hold
+1. On the **Administrative Units** page, click **Next** by keeping the default of **Full directory**.
 
-After creating an eDiscovery case, you can place a hold (also called an **eDiscovery hold**) on content locations to preserve content that may be relevant to your investigation. Content locations include Exchange mailboxes, SharePoint sites, OneDrive accounts, and the mailboxes and sites associated with Microsoft Teams and Microsoft 365 Groups, along with **Microsoft 365 Copilot** data.
+    ![](./media/adm-cop-7.7-g11.png)
 
-You can preserve all content in specific locations, or create a query-based hold to preserve only the content that matches your hold query. Another benefit of creating a hold is that you can quickly search the content locations on hold when running searches later.
+1. On the **Choose the type of retention policy to create** page, select **Static (1)**, and then choose **Next (2)**.
 
->**Note:** After you create an eDiscovery hold, it may take up to 24 hours for the hold to take effect.
+    ![](./media/adm-cop-7.7-g12.png)
 
-Follow the steps below to create an eDiscovery hold associated with your case:
+1. Deselect all locations, enable **Teams chats (1)** only, and then select **Next (2)**.
 
-1. Select **Hold policies (1)**, and then choose **New policy (2)**.
+    ![](./media/adm-cop-7.7-g14.png)
 
-    ![](./media/adm-cop-7.7-g5.png)
+    >**Note:** By default, all teams and all users are selected, but you can refine this by selecting the **Choose** and **Exclude** options.
 
-1. Enter the following name in the **Policy name (1)** field, and then select **Create (2)**.
+1. In the **Retain items for a specific period (1)** dropdown, select **Custom (2)**.
 
-    ```
-    CopilotHoldPolicy
-    ```
+    ![](./media/adm-cop-7.7-g15.png)
 
-    ![](./media/adm-cop-4.6-g14.png)
+1. Set **years (1)** to **1**, select **Delete items automatically (2)**, and then choose **Next (3)**.
 
-1. On the **Choose locations** wizard page, choose the content locations that you want to place on hold.
+    ![](./media/adm-cop-7.7-g16.png)
 
-    - **Exchange mailboxes:** Set the toggle to **On** and then select **Choose users, groups, or teams** to specify the mailboxes to place on hold. Use the search box to find user mailboxes and distribution groups.
+1. On the **Review and finish** page, review the settings, and then select **Submit**.
 
-    - **SharePoint sites:** Set the toggle to **On** and then select **Choose sites** to specify SharePoint sites and OneDrive accounts to place on hold. Type the URL for each site you want to place on hold.
+    ![](./media/adm-cop-7.7-g17.png)
 
-    - **Exchange public folders:** You can keep this toggle **Off** unless you need to hold public folders.
+1. Select **Done**.
 
-    >**Note:** When adding Exchange mailboxes or SharePoint sites to a hold, you must select at least one specific mailbox or site. If you set the toggle to **On** but do not select any items, the hold will be created without any content locations.
+    ![](./media/adm-cop-7.7-g18.png)
 
-    Select **Next**.
-
-1. To create a query-based hold for **Microsoft 365 Copilot** interactions, complete the following:
-
-    - In the **Keywords** box, type a query to preserve only the content that matches the query criteria. You can specify keywords, email message properties, or site properties such as file names. You can also use Boolean operators such as **AND**, **OR**, or **NOT**.
-
-    - Select **Add condition** to narrow the query. Each condition adds a clause to the search query. For example, you can specify a date range to preserve only content created within that range.
-
-    - Since Copilot prompts and responses are stored in a user's mailbox, you can retrieve this data by selecting **Add condition > Type > Copilot interactions**.
-
-    Select **Next**.
-
-1. Review your settings, and then select **Submit**.
-
-1. After some time, your eDiscovery hold will be created. Select **Done** and return to the **Hold** page.
-
-1. Select your newly created hold and verify it was created correctly.
+    >**Note:** When you create and submit a retention policy, it can take up to seven days for the retention policy to be applied.
 
 ## Conclusion
 
-In this exercise, you created an eDiscovery case in **Microsoft Purview** and placed a hold on content locations to preserve Copilot interaction data. You learned how to configure a query-based hold to target Copilot interactions specifically, and how to use eDiscovery to search for and preserve prompts and responses stored in user mailboxes.
+In this exercise, you created a retention policy in **Microsoft Purview** to manage the lifecycle of **Microsoft 365 Copilot** messages. You configured the policy to retain Copilot interactions for one year and then delete them automatically. You also reviewed how retention and deletion paths work for Copilot messages stored in Exchange mailboxes.
 
 ## **Congratulations! you have successfully completed this exercise, please click on next**

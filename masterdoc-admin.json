@@ -37,12 +37,12 @@
        "Order": 8
      },
      {
-        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/M365-Copilot/bifurcated-content/labguide/Exercise%207.3.md",
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/M365-Copilot/bifurcated-content/labguide/Exercise%207.4.md",
        "Order": 9
      },
      {
-        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/M365-Copilot/bifurcated-content/labguide/Exercise%207.4.md",
-       "Order": 10
+      "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/M365-Copilot/bifurcated-content/labguide/admin-exercise-4.3.md",
+     "Order": 10
      },
      {
       "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/M365-Copilot/bifurcated-content/labguide/admin-exercise-4.4.md",
@@ -59,10 +59,6 @@
      {
       "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/M365-Copilot/bifurcated-content/labguide/admin-exercise-4.7.md",
      "Order": 14
-     },
-     {
-      "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/M365-Copilot/bifurcated-content/labguide/admin-exercise-4.8.md",
-     "Order": 15
      }
    ]
  }
