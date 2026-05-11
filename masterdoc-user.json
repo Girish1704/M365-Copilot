@@ -5,7 +5,7 @@
   "BaseURL": "https://github.com/CloudLabsAI-Azure/M365-Copilot/tree/bifurcated-content",
   "Files": [
      {
-        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/M365-Copilot/main/labguide/Exercise%201-user.md",
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/M365-Copilot/refs/heads/main/labguide/Exercise%201-User.md",
        "Order": 1
      },
      {
